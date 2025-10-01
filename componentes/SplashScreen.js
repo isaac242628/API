@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { View, ActivityIndicator, Image, StyleSheet } from "react-native";
+import react, { useEffect } from "react";
+import { View, Image, StyleSheet, ActivityIndicator } from "react-native";
 
 const SplashScreen = ({ navigation }) => {
   useEffect(() => {
@@ -11,18 +11,14 @@ const SplashScreen = ({ navigation }) => {
   }, [navigation]);
 
   return (
-    <View style={StyleSheet.splashContainer}>
+    <View>
       <Image
         source={{
-          uri: "https://ingresso-a.akamaihd.net/b2b/production/uploads/article/image/4057/e416561e5a8bc2f64884cc2402682f50.jpg",
+          uri: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpt.wallpapers.com%2Fimagens-de-rick-and-morty&psig=AOvVaw0LMbxZYdBHQH0c9FhyOB3A&ust=1758064758373000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIDY54L0248DFQAAAAAdAAAAABAE",
         }}
-        style={StyleSheet.splashImage}
+        style={styles.splashImage}
       />
-      <ActivityIndicator
-        size="large"
-        color="#0000ff"
-        style={StyleSheet.loader}
-      />
+      <ActivityIndicator style={styles.loader} size="large" color="#000ff" />
     </View>
   );
 };

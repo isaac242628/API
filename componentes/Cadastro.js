@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, TextInput, Button, Alert } from "react-native";
-import { createProdutos } from "./Api";
+import { createProdutos } from "../Api";
 
 export default function Cadastro({ navigation }) {
   const [registro, setRegistros] = useState([]);
@@ -37,9 +37,9 @@ export default function Cadastro({ navigation }) {
 
   return (
     <View>
-      <TextInput placeholder="Produto" value={nome} onChandeText={setNome} />
-      <TextInput placeholder="Marca" value={marca} onChandeText={setMarca} />
-      <TextInput placeholder="Preco" value={preco} onChandeText={setPreco} />
+      <TextInput placeholder="Produto" value={nome} onChangeText={setNome} />
+      <TextInput placeholder="Marca" value={marca} onChangeText={setMarca} />
+      <TextInput placeholder="Preco" value={preco} onChangeText={setPreco} />
 
       <Button title="Cadastrar" onPress={handleSubmit} />
     </View>

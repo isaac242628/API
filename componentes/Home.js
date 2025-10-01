@@ -7,13 +7,13 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Card, Text, IconButton } from "react-native-paper";
-import { fetchEstoque, deleteEstoque } from "./Api";
+import { fetchProdutos, deleteProdutos } from "../Api";
 
 export default function Home({ navigation }) {
   const [registro, setRegistros] = useState([]);
 
   useEffect(() => {
-    fetchEstoque(setRegistros);
+    fetchProdutos(setRegistros);
   }, []);
 
   const handleDelete = (id) => {
@@ -21,7 +21,7 @@ export default function Home({ navigation }) {
       { text: "Cancelar", style: "cancel" },
       {
         text: "Deletar",
-        onPress: () => deleteEstoque(id, setRegistros),
+        onPress: () => deleteProdutos(id, setRegistros),
       },
     ]);
   };
@@ -31,24 +31,24 @@ export default function Home({ navigation }) {
         data={registro}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <Card style={StyleSheet.card}>
-            <View style={StyleSheet.cardContent}>
+          <Card style={styles.card}>
+            <View style={styles.cardContent}>
               {/* Coluna da esquerda: texto */}
-              <View style={StyleSheet.infoColumn}>
-                <Text style={StyleSheet.title}>Código: {item.id}</Text>
-                <Text>Produto: {item.produto}</Text>
+              <View style={styles.infoColumn}>
+                <Text style={styles.title}>Código: {item.id}</Text>
+                <Text>Produto: {item.nome}</Text>
                 <Text>Marca: {item.marca}</Text>
-                <Text>Valor: {item.valor}</Text>
+                <Text>Valor: {item.preco}</Text>
               </View>
 
               {/* Coluna da direita: botões */}
-              <View style={StyleSheet.actionsColumn}>
+              <View style={styles.actionsColumn}>
                 <IconButton
                   icon="pencil"
                   size={24}
                   iconColor="#3498db"
                   onPress={() =>
-                    navigation.navigate("Alterar", { Estoque: item })
+                    navigation.navigate("Alterar", { Produtos: item })
                   }
                 />
                 <IconButton
@@ -64,10 +64,10 @@ export default function Home({ navigation }) {
       />
 
       <TouchableOpacity
-        style={StyleSheet.floatingButton}
+        style={styles.floatingButton}
         onPress={() => navigation.navigate("Cadastro")}
       >
-        <Text style={StyleSheet.plusIcon}> + </Text>
+        <Text style={styles.plusIcon}> + </Text>
       </TouchableOpacity>
     </View>
   );
